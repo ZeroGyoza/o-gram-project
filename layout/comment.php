@@ -25,7 +25,8 @@ if ($bgcol == 1) {
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SeaGram</title>
+  <title>SocialGram</title>
+  <link rel="stylesheet" href="../CSS/theme.css" />
   <link rel="stylesheet" href="../CSS/sidebar.css" />
   <link rel="stylesheet" href="../CSS/rightbar.css" />
   <link rel="stylesheet" href="../CSS/reccomended.css" />
@@ -51,60 +52,41 @@ if ($bgcol == 1) {
 <body>
   <div class="sidebar">
     <a href="../layout/home.php" class="svghover">
-      <svg class="icon" fill="currentColor" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 264.564 264.564" xml:space="preserve" stroke="#50b7f5">
-        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-        <g id="SVGRepo_iconCarrier">
-          <g>
-            <g>
-              <path
-                d="M132.281,264.564c51.24,0,92.931-41.681,92.931-92.918c0-50.18-87.094-164.069-90.803-168.891L132.281,0l-2.128,2.773 c-3.704,4.813-90.802,118.71-90.802,168.882C39.352,222.883,81.042,264.564,132.281,264.564z">
-              </path>
-            </g>
-          </g>
-        </g>
+      <svg class="icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" stroke="#50b7f5"
+        stroke-width="1">
+        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
       </svg>
     </a>
     <div class="sidebarOption active">
-      <a style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+      <a class="nav-link">
         <span class="material-icons"> home </span>
         <h2>Home</h2>
       </a>
     </div>
 
     <div class="sidebarOption">
-      <?php
-      if (isset($id)) {
-        $temp = "?id=" . $id;
-      }
-      ?>
-      <a href="../layout/search.php"
-        style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+      <a href="../layout/search.php" class="nav-link">
         <span class="material-icons"> search </span>
         <h2>Explore</h2>
       </a>
     </div>
 
     <div class="sidebarOption">
-      <a href="../layout/bookmark.php"
-        style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+      <a href="../layout/bookmark.php" class="nav-link">
         <span class="material-icons"> bookmark </span>
         <h2>Bookmarks</h2>
       </a>
     </div>
 
     <div class="sidebarOption">
-      <a href="../layout/profile.php"
-        style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+      <a href="../layout/profile.php" class="nav-link">
         <span class="material-icons"> perm_identity </span>
         <h2>Profile</h2>
       </a>
     </div>
 
     <div class="sidebarOption">
-      <a href="../layout/settings.php"
-        style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+      <a href="../layout/settings.php" class="nav-link">
         <span class="material-icons"> settings </span>
         <h2>Settings</h2>
       </a>
@@ -169,38 +151,36 @@ if ($bgcol == 1) {
                 </div>
               </div>';
 
-            }
-          }
-          // Isi comment nya
-          echo "<div class='comment-section'>";
-  
-          $query3 = "SELECT * FROM comment WHERE post_id = $post_id";
-          $result3 = mysqli_query($connection, $query3);
-          while ($row3 = mysqli_fetch_array($result3)) {
-              $query4 = "SELECT * FROM user WHERE id =".$row3['user_id'];
-              $result4 = mysqli_query($connection,$query4);
-              while ($row4 = mysqli_fetch_array($result4)) {
-                echo "  <div class='user-header2'>";
-                echo "    <div class='user-left2'>";
-                echo "      <img src = 'pfp/" . $row4['profilepic'] . "' alt='Foto Profil'>";
-                echo "        <div class='user-info2'>";
-                echo "          <p class='display-name2'>" . $row4['nickname'] . "</p>";
-                echo "          <p class='username2'>" . $row4['username'] . "</p>";
-                echo "        </div>";
-                echo "    </div>";
-                echo "    <span class='comment'>" . $row3['caption'] . "</span>";
-                echo "   </div>";
-              }
-            }
+      }
+    }
+    // Isi comment nya
+    echo "<div class='comment-section'>";
+
+    $query3 = "SELECT * FROM comment WHERE post_id = $post_id";
+    $result3 = mysqli_query($connection, $query3);
+    while ($row3 = mysqli_fetch_array($result3)) {
+      $query4 = "SELECT * FROM user WHERE id =" . $row3['user_id'];
+      $result4 = mysqli_query($connection, $query4);
+      while ($row4 = mysqli_fetch_array($result4)) {
+        echo "  <div class='user-header2'>";
+        echo "    <div class='user-left2'>";
+        echo "      <img src = 'pfp/" . $row4['profilepic'] . "' alt='Foto Profil'>";
+        echo "        <div class='user-info2'>";
+        echo "          <p class='display-name2'>" . $row4['nickname'] . "</p>";
+        echo "          <p class='username2'>" . $row4['username'] . "</p>";
+        echo "        </div>";
+        echo "    </div>";
+        echo "    <span class='comment'>" . $row3['caption'] . "</span>";
+        echo "   </div>";
+      }
+    }
 
     ?>
   </div>
 
-  <form method="post" style="margin-top: 20px;">
-    <input type="text" name="comment" placeholder="Tulis komentar..."
-      style="padding: 8px; width: 70%; border-radius: 8px; border: 1px solid #ccc;">
-    <input type="submit" name="inputt" value="Kirim"
-      style="padding: 8px 16px; border-radius: 8px; background-color: #0084ff; color: white; border: none;">
+  <form method="post" class="comment-form">
+    <input type="text" name="comment" placeholder="Tulis komentar..." class="sg-input comment-input">
+    <input type="submit" name="inputt" value="Kirim" class="sg-btn sg-btn--primary comment-submit">
   </form>
 
   <?php

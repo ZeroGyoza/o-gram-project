@@ -52,21 +52,18 @@ if (isset($_POST['Save'])) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Profile</title>
-  <link rel="stylesheet" href="../CSS/Profile.css" />
+  <title>SocialGram · Profile</title>
+  <link rel="stylesheet" href="../CSS/theme.css" />
+  <link rel="stylesheet" href="../CSS/profile.css" />
   <link rel="stylesheet" href="../CSS/sidebar.css" />
   <link rel="stylesheet" href="../CSS/rightbar.css" />
   <link rel="stylesheet" href="../CSS/search.css" />
+  <link rel="stylesheet" href="../CSS/midPost.css" />
+  <link rel="stylesheet" href="../CSS/Posting.css" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   <style>
     :root {
       --background: <?php echo $backgroundColor; ?>;
-    }
-    * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
     }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -91,39 +88,35 @@ if (isset($_POST['Save'])) {
       </svg>
     </a>
     <div class="sidebarOption">
-      <a href="../layout/home.php"
-        style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+      <a href="../layout/home.php" class="nav-link">
         <span class="material-icons"> home </span>
         <h2>Home</h2>
       </a>
     </div>
 
     <div class="sidebarOption">
-      <a href="../layout/search.php"
-        style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+      <a href="../layout/search.php" class="nav-link">
         <span class="material-icons"> search </span>
         <h2>Explore</h2>
       </a>
     </div>
 
     <div class="sidebarOption ">
-      <a href="../layout/bookmark.php"
-        style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+      <a href="../layout/bookmark.php" class="nav-link">
         <span class="material-icons"> bookmark </span>
         <h2>Bookmarks</h2>
       </a>
     </div>
 
     <div class="sidebarOption active">
-      <a style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+      <a class="nav-link">
         <span class="material-icons"> perm_identity </span>
         <h2>Profile</h2>
       </a>
     </div>
 
     <div class="sidebarOption">
-      <a href="../layout/settings.php"
-        style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+      <a href="../layout/settings.php" class="nav-link">
         <span class="material-icons"> settings </span>
         <h2>Settings</h2>
       </a>

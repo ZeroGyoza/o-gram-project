@@ -4,14 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Interface</title>
-    <style>
-        body {
-            background-color: white;
-            color: black;
-            font-weight: bold;
-        }
-    </style>
+    <title>SocialGram · Admin</title>
+    <link rel="stylesheet" href="../../CSS/theme.css">
+    <link rel="stylesheet" href="../../CSS/admin.css">
 </head>
 
 <body>

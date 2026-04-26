@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../CSS/theme.css">
     <link rel="stylesheet" href="../../CSS/login.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <title>Login</title>
+    <title>SocialGram · Login</title>
 </head>
 
 <body>
@@ -36,7 +37,7 @@
                 <p>Don't Have Account? <a href="../Register/register.php">Register</a></p>
             </div>
         </form>
-        <div id="response" style="color:red; text-align:center; margin-top:10px;"></div>
+        <div id="response"></div>
     </div>
 
 

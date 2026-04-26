@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../CSS/theme.css">
     <link rel="stylesheet" href="../../CSS/register.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <title>Register</title>
+    <title>SocialGram · Register</title>
 </head>
 <div class="wrapper">
 
@@ -34,7 +35,7 @@
                     <img src="../../Picture/linkedin2.jpg" class="linkedln">
                 </div>
             </div>
-            <p style="margin-top: 10px;">Or Use Your Email For Registration</p>
+            <p>Or Use Your Email For Registration</p>
         </div>
 
         <!-- Form -->

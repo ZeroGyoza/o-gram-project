@@ -87,10 +87,13 @@ $row = mysqli_fetch_assoc($query);
 $bgcol = $row['bgcol'];
 
 $backgroundColor = "#ffffff";
+$primaryText = "#9b9b9b";
+$secondaryText = "#7c7d80";
+
 if ($bgcol == 1) {
   $backgroundColor = "#2b5876";
-} else {
-  $backgroundColor = "#ffffff";
+  $primaryText = "#ffffff";
+  $secondaryText = "#d1d1d1";
 }
 ?>
 <!DOCTYPE html>
@@ -100,9 +103,10 @@ if ($bgcol == 1) {
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SeaGram</title>
+  <title>SocialGram</title>
+  <link rel="stylesheet" href="../CSS/theme.css" />
   <link rel="stylesheet" href="../CSS/sidebar.css" />
-  <link rel="stylesheet" href="../CSS/Rightbar.css" />
+  <link rel="stylesheet" href="../CSS/rightbar.css" />
   <link rel="stylesheet" href="../CSS/reccomended.css" />
   <link rel="stylesheet" href="../CSS/midPost.css" />
   <link rel="stylesheet" href="../CSS/Posting.css">
@@ -116,7 +120,33 @@ if ($bgcol == 1) {
   <style>
     :root {
       --background:
-        <?php echo $backgroundColor; ?>;
+        <?php echo $backgroundColor; ?>
+      ;
+      --primary-text:
+        <?php echo $primaryText; ?>
+      ;
+      --secondary-text:
+        <?php echo $secondaryText; ?>
+      ;
+    }
+
+    body {
+      background-color: var(--background);
+    }
+
+    .footspan {
+      color: var(--secondary-text);
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .username {
+      color: var(--secondary-text) !important;
+    }
+
+    .display-name {
+      color: var(--primary-text);
+      font-weight: bold;
     }
   </style>
 </head>
@@ -124,59 +154,41 @@ if ($bgcol == 1) {
 <body>
   <div class="sidebar">
     <a href="../layout/home.php" class="svghover">
-      <svg class="icon" fill="currentColor" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 264.564 264.564" xml:space="preserve" stroke="#50b7f5">
-        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-        <g id="SVGRepo_iconCarrier">
-          <g>
-            <g>
-              <path
-                d="M132.281,264.564c51.24,0,92.931-41.681,92.931-92.918c0-50.18-87.094-164.069-90.803-168.891L132.281,0l-2.128,2.773 c-3.704,4.813-90.802,118.71-90.802,168.882C39.352,222.883,81.042,264.564,132.281,264.564z">
-              </path>
-            </g>
-          </g>
-        </g>
+      <svg class="icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" stroke="#50b7f5"
+        stroke-width="1">
+        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
       </svg>
     </a>
     <div class="sidebarOption active">
-      <a style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+      <a class="nav-link">
         <span class="material-icons"> home </span>
         <h2>Home</h2>
       </a>
     </div>
 
     <div class="sidebarOption">
-      <?php
-      if (isset($id)) {
-        $temp = "?id=" . $id;
-      }
-      ?>
-      <a href="../layout/search.php" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+      <a href="../layout/search.php" class="nav-link">
         <span class="material-icons"> search </span>
         <h2>Explore</h2>
       </a>
     </div>
 
     <div class="sidebarOption">
-      <a href="../layout/bookmark.php"
-        style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+      <a href="../layout/bookmark.php" class="nav-link">
         <span class="material-icons"> bookmark </span>
         <h2>Bookmarks</h2>
       </a>
     </div>
 
     <div class="sidebarOption">
-      <a href="../layout/profile.php"
-        style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+      <a href="../layout/profile.php" class="nav-link">
         <span class="material-icons"> perm_identity </span>
         <h2>Profile</h2>
       </a>
     </div>
 
     <div class="sidebarOption">
-      <a href="../layout/settings.php"
-        style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+      <a href="../layout/settings.php" class="nav-link">
         <span class="material-icons"> settings </span>
         <h2>Settings</h2>
       </a>
@@ -215,13 +227,13 @@ if ($bgcol == 1) {
     $result = mysqli_query($connection, $query);
 
     while ($row = mysqli_fetch_assoc($result)) { // Geting post_id
-
+    
       $id = $row['user_id'];
       $query2 = "SELECT * FROM user WHERE id = '$id'";
       $result2 = mysqli_query($connection, $query2);
 
       while ($row2 = mysqli_fetch_array($result2)) { // Getting user_id
-
+    
         echo "<div class='posting_card'>";
         echo "  <div class='user-header'>";
         echo "    <div class='user-left'>";
@@ -272,14 +284,14 @@ if ($bgcol == 1) {
 
     <!--likes-->
     <script>
-      $(document).ready(function() {
-        $(".temporary").change(function() {
+      $(document).ready(function () {
+        $(".temporary").change(function () {
           let postId = $(this).data("id");
           let $countSpan = $(this).siblings("span").last();
 
           $.post("likes.php", {
             id: postId
-          }, function(response) {
+          }, function (response) {
             $countSpan.text(response);
           });
         });
@@ -288,8 +300,8 @@ if ($bgcol == 1) {
     <!--bookmark-->
 
     <script>
-      $(document).ready(function() {
-        $(".bookmark").change(function() {
+      $(document).ready(function () {
+        $(".bookmark").change(function () {
           let postId = $(this).data("id");
           let caption = $(this).data("caption");
           let image = $(this).data("gambar");
@@ -300,7 +312,7 @@ if ($bgcol == 1) {
             caption: caption,
             image: image,
             likes: likes
-          }, function(response) {
+          }, function (response) {
             $countSpan.text(response);
           });
         });
@@ -353,21 +365,19 @@ if ($bgcol == 1) {
       echo "<div class='user-suggestion'>";
       echo "   <img src = 'pfp/" . $row['profilepic'] . "' alt='Profile 1' class = 'profile-img'>";
       echo "    <div class='user-info'>";
-      echo "        <div class='user-info'>";
       echo "          <p class='display-name'>" . $row['nickname'] . "</p>";
       echo "          <p class='username'>" . $row['username'] . "</p>";
-      echo "        </div>";
       echo "    </div>";
       echo "    <input type='checkbox' id='" . $followButton . "' class='follow-toggle hidden'>";
       echo "    <label for='" . $followButton . "' class='follow-btn' data-text='Follow' data-text-checked='Unfollow'></label>";
       echo "</div>";
-      echo"</a>";
+      echo "</a>";
     }
 
     ?>
     <hr>
     <div class="footer">
-    <span class="footspan"> &copy; seagram 2025</span>
+      <span class="footspan"> &copy; socialgram 2026</span>
     </div>
   </div>
 </body>

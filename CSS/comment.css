@@ -1,18 +1,20 @@
 .comment-section {
-  height: 100%;
   width: 100%;
-  /* background-color: rgb(0, 132, 255); */
-  border-radius: 20px;
-  padding: 10px;
+  border-radius: var(--radius);
+  padding: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
 }
 
 /* Untuk tiap komentar */
 .user-header2 {
   display: flex;
-  flex-direction: column; /* supaya caption di bawah profil */
-  background-color: #f5f5f5;
-  border-radius: 10px;
-  padding: 12px;
+  flex-direction: column;
+  background: rgba(2, 6, 23, 0.40);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: var(--radius-sm);
+  padding: 14px;
   margin-bottom: 12px;
 }
 
@@ -21,7 +23,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 8px; /* kasih jarak dengan caption */
+  margin-bottom: 8px;
 }
 
 /* Foto profil */
@@ -30,7 +32,7 @@
   height: 48px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid #ccc;
+  border: 2px solid rgba(34, 211, 238, 0.30);
 }
 
 /* Informasi pengguna */
@@ -40,21 +42,44 @@
 }
 
 .display-name2 {
-  font-weight: bold;
+  font-weight: 900;
   margin: 0;
-  color: #111;
+  color: var(--text);
 }
 
 .username2 {
-  color: #777;
+  color: var(--muted);
   font-size: 0.9em;
   margin: 2px 0 0;
 }
 
 /* Komentar pengguna */
 .comment {
-  color: #222;
+  color: rgba(229, 231, 235, 0.92);
   font-size: 0.95em;
-  margin-left: 60px; /* supaya sejajar teks, bukan avatar */
-  white-space: pre-wrap; /* biar \n tetap terlihat */
+  margin-left: 60px;
+  white-space: pre-wrap;
+}
+
+.comment-form {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 14px;
+}
+
+.comment-input {
+  flex: 1;
+  border-radius: 999px;
+}
+
+.comment-submit {
+  white-space: nowrap;
+}
+
+@media (max-width: 520px) {
+  .comment-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
 }

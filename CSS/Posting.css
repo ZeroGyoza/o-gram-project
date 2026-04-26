@@ -5,12 +5,15 @@
 }
 
 .posting_card {
-  width: 500px;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
   padding: 16px;
-  border-radius: 12px;
-  background-color: #fff;
-  color: #000;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
 }
 
 .posting_card img.post-image {  
@@ -45,17 +48,17 @@
 }
 
 .display-name {
-  font-weight: bold;
+  font-weight: 800;
   margin: 0;
 }
 .display-nameBlack{
-  font-weight: bold;
+  font-weight: 800;
   margin: 0;
-  color:black;
+  color: var(--text);
 }
 
 .username {
-  color: #777;
+  color: var(--muted);
   font-size: 0.9em;
   margin: 0;
 }
@@ -65,26 +68,32 @@
 }
 
 .follow-btn {
-  background-color: black;
-  color: white;
-  padding: 6px 16px;
-  border: none;
+  background: rgba(2, 6, 23, 0.55);
+  color: var(--text);
+  padding: 8px 16px;
+  border: 1px solid var(--border);
   border-radius: 999px;
   font-weight: bold;
   cursor: pointer;
-  transition: background 0.3s, color 0.3s;
+  transition: transform 120ms ease, background 160ms ease, border-color 160ms ease;
   display: inline-block;
 }
 
-.follow-toggle input:checked + .follow-btn {
-  background-color: #ccc;
-  color: #555;
+.follow-btn:hover {
+  transform: translateY(-1px);
+  border-color: rgba(34, 211, 238, 0.55);
+  background: rgba(34, 211, 238, 0.10);
+}
+
+.follow-toggle:checked + .follow-btn {
+  border-color: rgba(34, 211, 238, 0.60);
+  background: linear-gradient(90deg, rgba(34, 211, 238, 0.18), rgba(124, 58, 237, 0.12));
 }
 
 
 .button_action {
   display: flex;
-  gap: 20px;
+  gap: 16px;
   padding: 10px 0;
 }
 
@@ -93,11 +102,11 @@
 }
 
 .icon-toggle span:hover {
-  color: red;
+  color: var(--accent);
 }
 
 .icon-toggle input:checked + .fa-heart,
 .icon-toggle input:checked + .fa-bookmark,
 .icon-toggle input:checked + .fa-retweet {
-  color: red;
+  color: var(--accent);
 }

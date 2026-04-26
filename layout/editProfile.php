@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Profile</title>
+    <title>SocialGram · Edit Profile</title>
+    <link rel="stylesheet" href="../CSS/theme.css" />
     <link rel = "stylesheet" href = "../CSS/EditProfile.css">
 </head>
 <body>

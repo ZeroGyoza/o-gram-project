@@ -1,13 +1,13 @@
 .reccomended {
-  background-color: #4db8ff;
-  width: 350px;
-  padding: 20px;
-  border-radius: 30px;
+  width: 100%;
+  padding: 16px;
+  border-radius: var(--radius);
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  font-family: 'Georgia', serif;
-  margin-left: 10%;
+  gap: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
 }
 
 .user-suggestion {
@@ -31,13 +31,13 @@
 }
 
 .display-name {
-  font-weight: bold;
+  font-weight: 800;
   margin: 0;
-  color: black;
+  color: var(--text);
 }
 
 .username {
-  color: #444;
+  color: var(--muted);
   font-size: 0.85em;
   margin: 0;
 }
@@ -47,14 +47,21 @@
 }
 
 .follow-btn {
-  background-color: black;
-  color: white;
-  padding: 8px 20px;
-  border-radius: 20px;
-  font-weight: bold;
+  background: rgba(2, 6, 23, 0.55);
+  color: var(--text);
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-weight: 800;
   cursor: pointer;
   position: relative;
-  transition: background-color 0.3s ease;
+  border: 1px solid var(--border);
+  transition: transform 120ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.follow-btn:hover {
+  transform: translateY(-1px);
+  border-color: rgba(34, 211, 238, 0.55);
+  background: rgba(34, 211, 238, 0.10);
 }
 
 .follow-btn::after {
@@ -62,7 +69,8 @@
 }
 
 .follow-toggle:checked + .follow-btn {
-  background-color: #333;
+  border-color: rgba(34, 211, 238, 0.60);
+  background: linear-gradient(90deg, rgba(34, 211, 238, 0.18), rgba(124, 58, 237, 0.12));
 }
 
 .follow-toggle:checked + .follow-btn::after {

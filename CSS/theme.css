@@ -1,0 +1,112 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+:root {
+  /* Background is still driven by existing PHP pages via --background */
+  --background: #0b0f17;
+
+  /* Dark-first theme tokens */
+  --surface: rgba(15, 23, 42, 0.92);
+  --surface-2: rgba(17, 26, 49, 0.92);
+  --text: #e5e7eb;
+  --muted: rgba(229, 231, 235, 0.72);
+  --border: rgba(148, 163, 184, 0.20);
+
+  /* Neon accent */
+  --accent: #22d3ee;
+  --accent-2: #7c3aed;
+
+  --shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
+  --radius: 16px;
+  --radius-sm: 12px;
+
+  --space-1: 6px;
+  --space-2: 10px;
+  --space-3: 14px;
+  --space-4: 18px;
+  --space-5: 24px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(900px circle at 15% -10%, rgba(34, 211, 238, 0.12), transparent 55%),
+    radial-gradient(900px circle at 110% 0%, rgba(124, 58, 237, 0.10), transparent 55%),
+    var(--background);
+}
+
+a {
+  color: inherit;
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+/* Shared UI primitives */
+
+.sg-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.sg-input {
+  width: 100%;
+  background: rgba(2, 6, 23, 0.45);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 12px 14px;
+  outline: none;
+}
+
+.sg-input::placeholder {
+  color: rgba(229, 231, 235, 0.55);
+}
+
+.sg-input:focus {
+  border-color: rgba(34, 211, 238, 0.55);
+  box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.18);
+}
+
+.sg-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px solid var(--border);
+  background: rgba(2, 6, 23, 0.55);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 12px 16px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: transform 120ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.sg-btn:hover {
+  transform: translateY(-1px);
+  border-color: rgba(34, 211, 238, 0.55);
+  background: rgba(34, 211, 238, 0.10);
+}
+
+.sg-btn--primary {
+  border-color: rgba(34, 211, 238, 0.55);
+  background: linear-gradient(90deg, rgba(34, 211, 238, 0.22), rgba(124, 58, 237, 0.16));
+}
+
+.sg-muted {
+  color: var(--muted);
+}

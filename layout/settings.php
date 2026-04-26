@@ -26,16 +26,19 @@ if ($bgcol == 1) {
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SeaGram</title>
+  <title>SocialGram</title>
+  <link rel="stylesheet" href="../CSS/theme.css" />
   <link rel="stylesheet" href="../CSS/sidebar.css" />
-  <link rel="stylesheet" href="../CSS/Settings.css" />
+  <link rel="stylesheet" href="../CSS/settings.css" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="../CSS/midPost.css" />
 
   <style>
     :root {
-      --background: <?php echo $backgroundColor; ?>;
+      --background:
+        <?php echo $backgroundColor; ?>
+      ;
     }
   </style>
 </head>
@@ -43,54 +46,41 @@ if ($bgcol == 1) {
 <body>
   <div class="sidebar">
     <a href="../layout/home.php" class="svghover">
-      <svg class="icon" fill="currentColor" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 264.564 264.564" xml:space="preserve" stroke="#50b7f5">
-        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-        <g id="SVGRepo_iconCarrier">
-          <g>
-            <g>
-              <path
-                d="M132.281,264.564c51.24,0,92.931-41.681,92.931-92.918c0-50.18-87.094-164.069-90.803-168.891L132.281,0l-2.128,2.773 c-3.704,4.813-90.802,118.71-90.802,168.882C39.352,222.883,81.042,264.564,132.281,264.564z">
-              </path>
-            </g>
-          </g>
-        </g>
+      <svg class="icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" stroke="#50b7f5"
+        stroke-width="1">
+        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
       </svg>
     </a>
     <div class="sidebarOption">
-      <a href="../layout/home.php"
-        style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+      <a href="../layout/home.php" class="nav-link">
         <span class="material-icons"> home </span>
         <h2>Home</h2>
       </a>
     </div>
 
     <div class="sidebarOption">
-      <a href="../layout/search.php"
-        style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+      <a href="../layout/search.php" class="nav-link">
         <span class="material-icons"> search </span>
         <h2>Explore</h2>
       </a>
     </div>
 
     <div class="sidebarOption">
-      <a href="../layout/bookmark.php"
-        style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+      <a href="../layout/bookmark.php" class="nav-link">
         <span class="material-icons"> bookmark </span>
         <h2>Bookmarks</h2>
       </a>
     </div>
 
     <div class="sidebarOption">
-      <a href="../layout/profile.php" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+      <a href="../layout/profile.php" class="nav-link">
         <span class="material-icons"> perm_identity </span>
         <h2>Profile</h2>
       </a>
     </div>
 
     <div class="sidebarOption active">
-      <a style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+      <a class="nav-link">
         <span class="material-icons"> settings </span>
         <h2>Settings</h2>
       </a>
@@ -107,7 +97,7 @@ if ($bgcol == 1) {
         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
       }
 
-      xmlhttp.onreadystatechange = function() {
+      xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
           document.documentElement.style.setProperty("--background", xmlhttp.responseText);
         }
@@ -126,21 +116,21 @@ if ($bgcol == 1) {
     // }
   </script>
   <div class="posts">
-  <div class="settings">
-    <div class="button-row">
-      <span class="material-icons orb ">tsunami</span>
-        <button class="updatedata backgroundoption" onclick="changebackground(1)">Ocean Theme</button>
-    </div>
-    <div class="button-row">
-      <span class="material-icons orb ">light_mode</span>
+    <div class="settings">
+      <div class="button-row">
+        <span class="material-icons orb ">dark_mode</span>
+        <button class="updatedata backgroundoption" onclick="changebackground(1)">Dark Theme</button>
+      </div>
+      <div class="button-row">
+        <span class="material-icons orb ">light_mode</span>
         <button class="updatedata backgroundoption" onclick="changebackground(2)">Light Theme</button>
-    </div>
-    <div class="button-row">
-      <span class="material-icons orb ">logout</span>
+      </div>
+      <div class="button-row">
+        <span class="material-icons orb ">logout</span>
         <button class="updatedata backgroundoption" onclick="window.location.href='out.php'">Log Out</button>
+      </div>
+
     </div>
-    
-  </div>
   </div>
 </body>
 

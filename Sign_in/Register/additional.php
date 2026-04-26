@@ -28,38 +28,9 @@ fclose($file);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>SocialGram · Finish Signup</title>
+    <link rel="stylesheet" href="../../CSS/theme.css">
     <link rel="stylesheet" href="../../CSS/additional.css">
-    <style>
-        .harm-alert {
-            position: absolute;
-            top: 29vh;
-            left: 25vh;
-            background-color: #ffe0e0;
-            color: #a30000;
-            padding: 5px 10px;
-            border: 1px solid #ffaaaa;
-            border-left: 6px solid #ff4d4d;
-            font-weight: 600;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            border-radius: 8px;
-            font-size: 12px;
-            box-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
-            animation: slideDown 0.5s ease;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
 </head>
 
 <body>
@@ -121,7 +92,7 @@ fclose($file);
                         <label for="Location">Location</label>
                         <input type="text" id="locationInput" name="location" placeholder="Your Location..." onkeyup="searchLocation()">
                         <div id="suggestions"></div>
-                        <hr style="background-color: black; height: 2px;">
+                        <hr class="sg-divider">
                     </div>
 
                     <div class="inputbox" id="gender">

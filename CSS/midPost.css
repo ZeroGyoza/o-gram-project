@@ -1,54 +1,25 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-}
+/* Feed middle column: welcome header + spacing */
 
 .welcomeUser {
-    width: 100%;
-    height: 20vh;
-    position: relative;
-    text-align: center;
-    margin-bottom: 10%;
-
-}
-
-.posts{
-    display: flex;
-    /* justify-content: center; */
-    align-items: center;
-    background-color: black;
-}
-
-.posting_card {
-    margin-bottom: 15px;
+  width: 100%;
+  padding: 18px 18px 8px;
+  border-radius: var(--radius);
+  background: linear-gradient(90deg, rgba(34, 211, 238, 0.12), rgba(124, 58, 237, 0.10));
+  border: 1px solid rgba(34, 211, 238, 0.22);
 }
 
 .welcome-text {
-    margin-top: 2vh;
-    display: inline-block;
-    font-size: 2rem;
-    font-weight: 700;
-    color: #333;
-    background: linear-gradient(90deg, #00c6ff, #0072ff);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    animation: fadeInUp 0.8s ease-in-out;
-    font-family: 'Poppins', sans-serif;
-  }
-  
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(15px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+  display: inline-block;
+  font-size: 1.55rem;
+  font-weight: 900;
+  letter-spacing: 0.3px;
+  background: linear-gradient(90deg, var(--accent), rgba(124, 58, 237, 0.95));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.posting_card {
+  margin: 0;
+}
 
