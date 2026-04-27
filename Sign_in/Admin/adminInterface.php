@@ -94,7 +94,7 @@
             ?>
         </table>
         <br>
-        <button type='submit' name='block'>Block id yang dipilih</button>
+        <button type='submit' name='block' style="color: red;">Block id yang dipilih</button>
     </form>
 
     <?php
