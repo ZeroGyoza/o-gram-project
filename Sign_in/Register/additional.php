@@ -80,8 +80,8 @@ fclose($file);
                         <input type="text" name="nickname" placeholder="Your Nickname..." required>
                     </div>
                     <div class="inputbox">
-                        <label for="Birth">Birth Date</label>
-                        <input type="date" name="birth" placeholder="Your Birth Date..." required>
+                        <label for="birthDate">Birth Date</label>
+                        <input type="date" id="birthDate" name="birth" required>
                     </div>
                     <div class="inputbox">
                         <label for="Phone Number">Phone Number</label>
@@ -90,7 +90,8 @@ fclose($file);
 
                     <div class="inputbox">
                         <label for="Location">Location</label>
-                        <input type="text" id="locationInput" name="location" placeholder="Your Location..." onkeyup="searchLocation()">
+                        <input type="text" id="locationInput" name="location" placeholder="Your Location..."
+                            onkeyup="searchLocation()">
                         <div id="suggestions"></div>
                         <hr class="sg-divider">
                     </div>
@@ -124,43 +125,53 @@ fclose($file);
 </body>
 
 <script>
-let xmlData;
+    let xmlData;
 
-window.onload = function () {
-  const xhr = new XMLHttpRequest();
-  xhr.open("GET", "../../XML/location.xml", true);
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      xmlData = xhr.responseXML;
-    }
-  };
-  xhr.send();
-};
+    window.onload = function () {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "../../XML/location.xml", true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                xmlData = xhr.responseXML;
+            }
+        };
+        xhr.send();
 
-function searchLocation() {
-  let input = document.getElementById("locationInput").value.toLowerCase();
-  let suggestions = document.getElementById("suggestions");
-  suggestions.innerHTML = "";
+        const birthDateInput = document.getElementById("birthDate");
+        if (birthDateInput && typeof birthDateInput.showPicker === "function") {
+            birthDateInput.addEventListener("focus", function () {
+                birthDateInput.showPicker();
+            });
+            birthDateInput.addEventListener("click", function () {
+                birthDateInput.showPicker();
+            });
+        }
+    };
 
-  if (input.length === 0 || !xmlData) return;
-
-  let locations = xmlData.getElementsByTagName("location");
-
-  for (let i = 0; i < locations.length; i++) {
-    let loc = locations[i].textContent;
-    if (loc.toLowerCase().includes(input)) {
-      let div = document.createElement("div");
-      div.innerHTML = loc;
-      div.style.padding = "5px";
-      div.style.cursor = "pointer";
-      div.onclick = function () {
-        document.getElementById("locationInput").value = loc;
+    function searchLocation() {
+        let input = document.getElementById("locationInput").value.toLowerCase();
+        let suggestions = document.getElementById("suggestions");
         suggestions.innerHTML = "";
-      };
-      suggestions.appendChild(div);
+
+        if (input.length === 0 || !xmlData) return;
+
+        let locations = xmlData.getElementsByTagName("location");
+
+        for (let i = 0; i < locations.length; i++) {
+            let loc = locations[i].textContent;
+            if (loc.toLowerCase().includes(input)) {
+                let div = document.createElement("div");
+                div.innerHTML = loc;
+                div.style.padding = "5px";
+                div.style.cursor = "pointer";
+                div.onclick = function () {
+                    document.getElementById("locationInput").value = loc;
+                    suggestions.innerHTML = "";
+                };
+                suggestions.appendChild(div);
+            }
+        }
     }
-  }
-}
 </script>
 
 
