@@ -17,7 +17,7 @@ $id = $_SESSION['user_id'];
         Caption 
         <input type = "text" name = "caption">
         Posting
-        <input type = "file" name = "postPhoto" required>
+        <input type = "file" name = "postPhoto">
         <input type = "submit" name = "upload">
 
     </form>
