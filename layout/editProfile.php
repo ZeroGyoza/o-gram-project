@@ -10,15 +10,19 @@
 <body>
     <?php
         session_start();
+        include('../Connection/Connection.php');
         $id = $_SESSION['user_id'];
+
+        $query = mysqli_query($connection, "SELECT * FROM user WHERE id = '$id'");
+        $data = mysqli_fetch_assoc($query);
     ?>
     <form method = "post" enctype="multipart/form-data" action="../layout/profile.php">
         Display Name 
-        <input type = "text" name = "displayname" required>
+        <input type = "text" name = "displayname" placeholder="<?php echo $data['nickname']; ?>" required>
         Username
-        <input type = "text" name = "username" required>
+        <input type = "text" name = "username" placeholder="<?php echo $data['username']; ?>" required>
         Bio Profile
-        <input type = "text" name = "bio-profile" alt = "No bio yet.">
+        <input type = "text" name = "bio-profile" placeholder="<?php echo $data['bio']; ?>" alt = "No bio yet.">
         Banner
         <input type = "file" name = "banner">
         Profile picture
