@@ -17,6 +17,16 @@ if (isset($_POST['buttonRegis'])) {
   $pfp = "avatar def.jpg";
   $banner = "white.jpg";
 
+  $checkEmail = mysqli_query($connection, "SELECT email FROM user WHERE email = '$email' LIMIT 1");
+
+  if (mysqli_num_rows($checkEmail) > 0) {
+      echo "<script>
+              alert('This email address ($email) is already in use.');
+              window.location.href='../Sign_in/Register/register.php'; 
+            </script>";
+      exit();
+  }
+
   $query = "INSERT INTO user (username, nickname, email, password, hashpassword, date_of_birth, location, phone, gender, bio, role, profilepic, bgcol, bannerpic) VALUES (
     '$username',
     '$nickname',
