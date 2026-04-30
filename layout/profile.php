@@ -129,8 +129,12 @@ if (isset($_POST['Save'])) {
   while ($row = mysqli_fetch_array($result)) {
     echo "<div class='profile-page'>";
     echo "<div class='profile-background2'>";
-    echo "<div class='profile-banner2'><img src = 'banner/" . $row['bannerpic'] . "'>";
+    echo "<div class='profile-banner2'>";
+    if (!empty($row['bannerpic'])) {
+      echo "<img src = 'banner/" . $row['bannerpic'] . "'>";
+    }
     echo "<a href='editProfile.php' class = 'edit-toggle2'>Edit Profile</a>";
+    echo "</div>";
 
     echo "<div class='user-header2'>";
     echo "<div class='user-left2'>";
@@ -149,7 +153,8 @@ if (isset($_POST['Save'])) {
     $id2 = $row['id'];
     $query2 = "SELECT * FROM post WHERE user_id = '$id2'";
     $result2 = mysqli_query($connection, $query2);
-    while ($row2 = mysqli_fetch_array($result2)) {
+    if (mysqli_num_rows($result2) > 0) {
+      while ($row2 = mysqli_fetch_array($result2)) {
       echo "<div class='posting_card'>";
       echo "  <div class='user-header'>";
       echo "    <div class='user-left'>";
@@ -187,6 +192,9 @@ if (isset($_POST['Save'])) {
                   </label>
                 </div>
               </div>';
+      }
+    } else {
+      echo "<div class='posting_card'><p class='no-posts'>No posts yet.</p></div>";
     }
   }
   ?>

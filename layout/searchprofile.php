@@ -21,34 +21,6 @@ if ($bgcol == 1) {
 }
 ?>
 
-<?php
-
-include('../Connection/Connection.php');
-
-if (isset($_POST['Save'])) {
-  $displayName = $_POST['displayname'];
-  $userName = $_POST['username'];
-  $BioProfile = $_POST['bio-profile'];
-  $profilePicture = $_FILES['profilePic']['name'];
-  $temporary = $_FILES['profilePic']['tmp_name'];
-  $id = $_POST['id'];
-
-  move_uploaded_file($temporary, "../Posting/pfp/" . $profilePicture);
-
-  $filepath = "pfp/" . $profilePicture;
-  $update = "UPDATE user SET 
-            username = $userName, 
-            nickname = $displayName, 
-            bio = $BioProfile,
-            profilepic = $filepath";
-
-  if (mysqli_query($connection, $update)) {
-    
-  } 
-}
-
-
-?>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -124,7 +96,6 @@ if (isset($_POST['Save'])) {
   </div>
 
   <?php
-    include("../Connection/Connection.php");
     $tempid = $_GET["tempid"];
     $query = "SELECT * FROM user WHERE id = '$tempid'";
     $result = mysqli_query($connection, $query);
@@ -150,6 +121,7 @@ if (isset($_POST['Save'])) {
     $id2 = $row['id'];
     $query2 = "SELECT * FROM post WHERE user_id = '$id2'";
     $result2 = mysqli_query($connection, $query2);
+    if (mysqli_num_rows($result2) > 0) {
       while ($row2 = mysqli_fetch_array($result2)) {
         echo "<div class='posting_card'>";
         echo "  <div class='user-header'>";
@@ -187,7 +159,10 @@ if (isset($_POST['Save'])) {
                 </div>
               </div>';
       }
+    } else {
+      echo "<div class='posting_card'><p class='no-posts'>No posts yet.</p></div>";
     }
+  }
   ?>
 </body>
 

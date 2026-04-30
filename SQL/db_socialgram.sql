@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 27, 2026 at 04:55 AM
+-- Generation Time: Apr 30, 2026 at 09:32 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -38,7 +38,7 @@ CREATE TABLE `blocked_acc` (
 --
 
 INSERT INTO `blocked_acc` (`block_id`, `user_id`, `reason`) VALUES
-(2, 5, 'test block');
+(7, 7, 'Test block');
 
 -- --------------------------------------------------------
 
@@ -57,11 +57,10 @@ CREATE TABLE `bookmark` (
 --
 
 INSERT INTO `bookmark` (`bookmark_id`, `post_id`, `user_id`) VALUES
-(3, 5, 1),
-(5, 5, 3),
-(9, 5, 4),
-(10, 4, 1),
-(11, 5, 7);
+(1, 1, 1),
+(2, 1, 3),
+(3, 2, 5),
+(4, 4, 1);
 
 -- --------------------------------------------------------
 
@@ -81,14 +80,11 @@ CREATE TABLE `comment` (
 --
 
 INSERT INTO `comment` (`comment_id`, `user_id`, `post_id`, `caption`) VALUES
-(1, 1, 5, 'Mantap boss'),
-(2, 1, 5, ''),
-(3, 1, 5, ''),
-(4, 1, 5, ''),
-(5, 4, 5, 'uiiihhh, halo test!'),
-(6, 3, 5, 'lah, kok ada error?'),
-(7, 4, 8, 'gray'),
-(8, 7, 5, 'Halo');
+(1, 2, 1, 'Heellooooo'),
+(2, 3, 1, 'Hello'),
+(3, 5, 1, 'ooohhm helo helo'),
+(4, 4, 1, 'Hiii'),
+(5, 1, 4, 'Pikachu is my favorite :DD');
 
 -- --------------------------------------------------------
 
@@ -107,11 +103,13 @@ CREATE TABLE `likes` (
 --
 
 INSERT INTO `likes` (`likes_id`, `user_id`, `post_id`) VALUES
-(8, 3, 5),
-(9, 1, 5),
-(17, 1, 4),
-(18, 1, 6),
-(19, 4, 5);
+(1, 2, 1),
+(3, 5, 1),
+(4, 5, 2),
+(5, 5, 3),
+(6, 4, 3),
+(7, 4, 2),
+(8, 1, 4);
 
 -- --------------------------------------------------------
 
@@ -134,13 +132,10 @@ CREATE TABLE `post` (
 --
 
 INSERT INTO `post` (`post_id`, `user_id`, `caption`, `gambar`, `likes`, `bookmarked`, `comment`) VALUES
-(4, 1, 'test POST', 'pict/Screenshot 2026-04-02 150200.png', 1, 1, 0),
-(5, 3, 'test POST', 'pict/Screenshot 2026-03-17 111926.png', 3, 4, 7),
-(6, 1, 'test POST apalah', 'pict/Screenshot 2026-02-24 214129.png', 1, 0, 0),
-(7, 4, 'eww :v', 'pict/Screenshot 2026-03-12 092228.png', 0, 0, 0),
-(8, 1, 'last for now', 'pict/Screenshot 2026-03-04 105702.png', 0, 0, 1),
-(9, 1, 'Caption aja', 'pict/', 0, 0, 0),
-(10, 7, 'TEST postingan', 'pict/Screenshot 2026-04-20 211112.png', 0, 0, 0);
+(1, 1, 'Halo Semua!', 'pict/Screenshot 2026-04-30 131731.png', 2, 2, 4),
+(2, 3, 'Night Life', 'pict/Screenshot 2026-04-30 132957.png', 2, 1, 0),
+(3, 3, 'Golden Lights', 'pict/Screenshot 2026-04-30 133105.png', 2, 0, 0),
+(4, 4, 'Pokemons :D', 'pict/Screenshot 2026-04-30 134109.png', 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -173,12 +168,13 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `nickname`, `email`, `password`, `hashpassword`, `date_of_birth`, `location`, `phone`, `gender`, `bio`, `role`, `created_at`, `bgcol`, `profilepic`, `bannerpic`, `status`) VALUES
-(1, 'test', 'TTESSSST', 'test@email.com', 'qawsed', 'befe9f8a14346e3e52c762f333395796', '2005-02-26', 'Bandung, Indonesia', '08123456789', 'Male', 'dsgfsdfgdsgdsgdfs', 'member', '2026-04-26 06:51:42', '2', 'Screenshot 2026-04-02 150205.png', 'Screenshot 2026-04-02 150209.png', 'ready'),
-(3, 'test1', 'ytuj57i5', 'apalah1@gmail.com', 'qawsed', 'befe9f8a14346e3e52c762f333395796', '2026-04-03', 'Jacksonville, USA', '081234354', '', 'kuk,,nm,bkjgjyju', 'member', '2026-04-26 09:10:10', '2', 'avatar def.jpg', 'white.jpg', 'ready'),
-(4, 'test2', 't54cxvsrgytj', 'apalah2@gmail.com', 'qawsed', 'befe9f8a14346e3e52c762f333395796', '2026-04-23', 'Cairo, Egypt', '0832347649', '', 'flykly7jbvnbrgf4 tw4eby trhsb rf', 'member', '2026-04-26 09:11:55', '2', 'avatar def.jpg', 'white.jpg', 'ready'),
-(5, 'test3', '386bdhiwfy', 'apalah3@gmail.com', 'qawsed', 'befe9f8a14346e3e52c762f333395796', '2077-12-06', 'Oslo, Norway', '0487346773', '', 'hjsaodqbnjffceifjret', 'member', '2026-04-26 11:19:34', '1', 'avatar def.jpg', 'white.jpg', 'block'),
-(6, '12345678', 'David Christian', 'john.doe@email.com', 'abcde', 'befe9f8a14346e3e52c762f333395796', '2026-01-05', 'Bandung, Indonesia', '0812345678', 'Male', 'Halo aku David', 'admin', '2026-04-27 02:12:02', 'white', 'avatar def.jpg', 'white.jpg', 'ready'),
-(7, 'test10', 'ubah1', 'apalah4@gmail.com', 'qawsed', 'befe9f8a14346e3e52c762f333395796', '2003-10-04', 'Tokyo, Japan', '08573862', 'Female', 'dsgf sdfgd sgdsgdfs', 'member', '2026-04-27 02:40:41', '1', 'Screenshot 2026-02-24 213112.png', 'Screenshot 2026-01-27 120732.png', 'ready');
+(1, 'user', 'Manusa Alam', 'john.doe@email.com', 'password', '5f4dcc3b5aa765d61d8327deb882cf99', '2009-07-15', 'Jakarta, Indonesia', '084573842536', 'Male', 'Halo semua! Welcome :D', 'member', '2026-04-30 06:13:50', '1', 'Screenshot 2026-04-30 131533.png', 'Screenshot 2026-04-30 131458.png', 'ready'),
+(2, 'user2', 'Sally Sunari', 'hauda@gmail.com', 'password', '5f4dcc3b5aa765d61d8327deb882cf99', '2005-06-13', 'Yogyakarta, Indonesia', '084512316495', 'Female', 'Just walking by the digital landscape', 'member', '2026-04-30 06:21:30', '1', 'Screenshot 2026-04-30 132206.png', 'Screenshot 2026-04-30 132223.png', 'ready'),
+(3, 'user3', 'Johnny Silver', 'john.silver@email.com', 'password', '5f4dcc3b5aa765d61d8327deb882cf99', '2001-10-17', 'New York, USA', '087543436723', 'Male', 'Wake up samurai, we got a city to burn', 'member', '2026-04-30 06:26:37', '1', 'Screenshot 2026-04-30 132707.png', 'Screenshot 2026-04-30 132656.png', 'ready'),
+(4, 'user4', 'Emily Santos', 'haudalina@gmail.com', 'password', '5f4dcc3b5aa765d61d8327deb882cf99', '2006-11-10', 'Rio de Janeiro, Brazil', '089976675463', 'Female', 'Be not stressed... that is the key', 'member', '2026-04-30 06:33:40', '1', 'Screenshot 2026-04-30 133539.png', 'Screenshot 2026-04-30 133449.png', 'ready'),
+(5, 'user5', 'asdas', 'apalah@gmail.com', 'password', '5f4dcc3b5aa765d61d8327deb882cf99', '2008-01-16', 'Houston, USA', '084563457734', '', 'Everything', 'member', '2026-04-30 06:38:33', '1', 'avatar def.jpg', 'white.jpg', 'ready'),
+(6, 'admin', 'Admin', 'bebas@email.com', 'password', '5f4dcc3b5aa765d61d8327deb882cf99', '2026-04-01', 'Moscow, Russia', '099944447777', 'Male', 'Hakerman', 'admin', '2026-04-30 07:07:48', 'white', 'avatar def.jpg', 'white.jpg', 'ready'),
+(7, 'deleteme', 'Delete ME ', 'deleteme@email.com', 'password', '5f4dcc3b5aa765d61d8327deb882cf99', '2026-04-23', 'Chennai, India', '000000000000', 'Male', 'Delete me plzzzz', 'member', '2026-04-30 07:20:40', 'white', 'avatar def.jpg', 'white.jpg', 'block');
 
 --
 -- Indexes for dumped tables
@@ -229,31 +225,31 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `blocked_acc`
 --
 ALTER TABLE `blocked_acc`
-  MODIFY `block_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `block_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `bookmark`
 --
 ALTER TABLE `bookmark`
-  MODIFY `bookmark_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `bookmark_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `likes_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `likes_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user`

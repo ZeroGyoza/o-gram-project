@@ -99,3 +99,10 @@
   margin-top: 14px;
 }
 
+.no-posts {
+  padding: 30px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 1.1rem;
+}
+
